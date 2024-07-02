@@ -1,6 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
+const knex = require('knex')
+
+const db = knex({
+    client: 'pg',
+    connection: {
+      host: '127.0.0.1',
+      port: 3306,
+      user: 'your_database_user',
+      password: '',
+      database: 'smart-brain',
+    },
+});
+
+db.select('*').from('users');
 
 const app = express();
 
